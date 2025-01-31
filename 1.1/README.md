@@ -79,6 +79,41 @@
 1. Домашняя работа оформляется в своём Git-репозитории в файле README.md. Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
 2. Файл README.md должен содержать скриншоты вывода команд `kubectl get nodes` и скриншот дашборда.
 
+Устанавливал на MacOS
+
+```bash
+brew install ubuntu/microk8s/microk8s
+microk8s install
+microk8s status --wait-ready
+```
+![image](https://github.com/user-attachments/assets/cacce6fa-a42f-4ac7-af4b-7c6ac87a6120)
+
+```bash
+microk8s enable dashboard
+microk8s enable dns
+microk8s enable registry
+microk8s enable istio
+```
+
+
+```sh
+microk8s kubectl get nodes -o wide
+```
+![image](https://github.com/user-attachments/assets/5f42ff64-2a73-46f4-b9f1-4b1bc38bbf84)
+
+```sh
+microk8s kubectl get pods -A -o wide
+```
+![image](https://github.com/user-attachments/assets/58e8e7c8-e785-4229-9b30-66ab86e5444e)
+
+```bash
+microk8s dashboard-proxy
+```
+
+![image](https://github.com/user-attachments/assets/413a8f2f-11f1-4a9c-ad2c-ca71aa971d73)
+
+
+
 ------
 
 ### Критерии оценки
