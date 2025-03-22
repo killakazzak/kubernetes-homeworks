@@ -27,6 +27,32 @@
 2. Использовать image - gcr.io/kubernetes-e2e-test-images/echoserver:2.2.
 3. Подключиться локально к Pod с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
 
+hello-world-pod.yaml
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+spec:
+  containers:
+  - name: echoserver
+    image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+    ports:
+    - containerPort: 8080
+```
+
+```bash
+kubectl apply -f hello-world-pod.yaml
+kubectl get pods
+```
+```bash
+kubectl port-forward pod/hello-world 8080:8080
+```
+
+```
+curl http://localhost:8080
+```
+
 ------
 
 ### Задание 2. Создать Service и подключить его к Pod
