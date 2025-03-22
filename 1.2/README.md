@@ -107,6 +107,7 @@ microk8s kubectl apply -f netology-svc.yaml
 microk8s kubectl get pods
 microk8s kubectl get services
 ```
+![image](https://github.com/user-attachments/assets/ba157836-cd75-4b1a-8fc5-e97d6f589640)
 
 ```bash
 microk8s kubectl port-forward service/netology-svc 8080:80
