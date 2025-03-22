@@ -66,6 +66,54 @@ curl http://localhost:8080
 3. Создать Service с именем netology-svc и подключить к netology-web.
 4. Подключиться локально к Service с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
 
+netology-web-pod.yaml
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: netology-web
+spec:
+  containers:
+  - name: echoserver
+    image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+    ports:
+    - containerPort: 8080
+```
+netology-svc.yaml
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: netology-svc
+spec:
+  selector:
+    app: netology-web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+```
+
+```bash
+microk8s kubectl apply -f netology-web-pod.yaml
+microk8s kubectl apply -f netology-svc.yaml
+```
+```bash
+kubectl get pods
+kubectl get services
+```
+
+```bash
+kubectl port-forward service/netology-svc 8080:80
+```
+```bash
+curl http://localhost:8080
+```
+
+
 ------
 
 ### Правила приёма работы
