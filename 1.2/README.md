@@ -42,11 +42,11 @@ spec:
 ```
 
 ```bash
-kubectl apply -f hello-world-pod.yaml
-kubectl get pods
+microk8s kubectl apply -f hello-world-pod.yaml
+microk8s kubectl get pods
 ```
 ```bash
-kubectl port-forward pod/hello-world 8080:8080
+microk8s kubectl port-forward pod/hello-world 8080:8080
 ```
 
 ```
