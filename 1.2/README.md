@@ -45,13 +45,17 @@ spec:
 microk8s kubectl apply -f hello-world-pod.yaml
 microk8s kubectl get pods
 ```
+![image](https://github.com/user-attachments/assets/c146bd5b-61c1-436d-9432-c7ef99f0048e)
+
 ```bash
 microk8s kubectl port-forward pod/hello-world 8080:8080
 ```
+![image](https://github.com/user-attachments/assets/0eee5eec-a439-46d6-9ede-12f37b1573ed)
 
 ```
 curl http://localhost:8080
 ```
+![image](https://github.com/user-attachments/assets/faa3ce14-0c06-4623-a4c6-5518961ec1b3)
 
 ------
 
