@@ -101,13 +101,15 @@ spec:
 microk8s kubectl apply -f netology-web-pod.yaml
 microk8s kubectl apply -f netology-svc.yaml
 ```
+![image](https://github.com/user-attachments/assets/f743f653-1a5e-44b1-a3e4-0a3b70d93942)
+
 ```bash
-kubectl get pods
-kubectl get services
+microk8s kubectl get pods
+microk8s kubectl get services
 ```
 
 ```bash
-kubectl port-forward service/netology-svc 8080:80
+microk8s kubectl port-forward service/netology-svc 8080:80
 ```
 ```bash
 curl http://localhost:8080
