@@ -1,8 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: multitool
+  name: multitool-test
 spec:
   containers:
   - name: multitool
     image: wbitt/network-multitool:latest
+    command: ["sleep", "infinity"]

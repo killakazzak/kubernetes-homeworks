@@ -1,11 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-multitool-svc
+  name: nginx-multitool-service
 spec:
   selector:
     app: nginx-multitool
   ports:
-  - protocol: TCP
+  - name: nginx-port
+    protocol: TCP
     port: 80
     targetPort: 80
+  - name: multitool-port
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP
