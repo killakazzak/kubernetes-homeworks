@@ -73,6 +73,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: netology-web
+  labels:
+    app: netology-web
 spec:
   containers:
   - name: echoserver
@@ -107,15 +109,17 @@ microk8s kubectl apply -f netology-svc.yaml
 microk8s kubectl get pods
 microk8s kubectl get services
 ```
-![image](https://github.com/user-attachments/assets/2810d54d-d089-47f4-a9e8-eca2a8cc5ab3)
-
+![image](https://github.com/user-attachments/assets/f56d6b7e-284a-4598-abe1-15de4e0ffbd5)
 
 ```bash
 microk8s kubectl port-forward service/netology-svc 8080:80
 ```
+![image](https://github.com/user-attachments/assets/fcfdf0c3-9d1c-4167-bb21-c19975fb7ef5)
+
 ```bash
 curl http://localhost:8080
 ```
+![image](https://github.com/user-attachments/assets/a7db8e70-4ed0-49fb-99a6-2172d92ed125)
 
 
 ------
