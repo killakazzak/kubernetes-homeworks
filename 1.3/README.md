@@ -123,8 +123,75 @@ curl http://nginx-multitool-service:8080
 ### Задание 2. Создать Deployment и обеспечить старт основного контейнера при выполнении условий
 
 1. Создать Deployment приложения nginx и обеспечить старт контейнера только после того, как будет запущен сервис этого приложения.
+
+nginx-deployment.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+      - name: init-busybox
+        image: busybox
+        command: ['sh', '-c', 'echo Init container is running; sleep 5']
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+```
+
+```bash
+microk8s kubectl apply -f nginx-deployment.yaml
+```
+
 2. Убедиться, что nginx не стартует. В качестве Init-контейнера взять busybox.
+
+```bash
+microk8s kubectl get pods
+```
+
+![image](https://github.com/user-attachments/assets/3c5c21e9-8cae-4adc-b1c1-fd52015ad064)
+
 3. Создать и запустить Service. Убедиться, что Init запустился.
+
+nginx-service.yaml
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+```
+
+```bash
+microk8s kubectl apply -f nginx-service.yaml
+```
 4. Продемонстрировать состояние пода до и после запуска сервиса.
 
 ------
