@@ -144,7 +144,7 @@ spec:
       initContainers:
       - name: init-busybox
         image: busybox
-        command: ['sh', '-c', 'echo Init container is running; sleep 5']
+        command: ['sh', '-c', "until nslookup nginx-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
       containers:
       - name: nginx
         image: nginx
