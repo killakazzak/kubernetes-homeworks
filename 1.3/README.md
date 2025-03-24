@@ -194,6 +194,11 @@ microk8s kubectl apply -f nginx-service.yaml
 ```
 4. Продемонстрировать состояние пода до и после запуска сервиса.
 
+```bash
+microk8s kubectl get pods
+```
+![image](https://github.com/user-attachments/assets/bf9a98e8-a4fa-4c7b-bb0c-009c9e87700e)
+
 ------
 
 ### Правила приема работы
