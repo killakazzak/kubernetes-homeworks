@@ -1,0 +1,27 @@
+# multitool-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multitool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multitool
+  template:
+    metadata:
+      labels:
+        app: multitool
+    spec:
+      containers:
+      - name: multitool
+        image: nicolaka/netshoot
+        command: ["/bin/sh", "-c", "while true; do sleep 5; done"]
+        volumeMounts:
+        - mountPath: /mnt/data
+          name: nfs-storage
+      volumes:
+      - name: nfs-storage
+        persistentVolumeClaim:
+          claimName: nfs-pvc
+
