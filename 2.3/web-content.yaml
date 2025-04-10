@@ -6,7 +6,7 @@ data:
   index.html: |
     <html>
       <body>
-        <h1>Secure Kubernetes Page 🔒</h1>
+    <h1>Secure Kubernetes Page!</h1>
         <p>Served via HTTPS</p>
       </body>
     </html>
