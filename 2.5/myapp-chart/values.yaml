@@ -1,0 +1,21 @@
+environment: dev  # Окружение (dev, staging, prod)
+
+# Настройки для основного приложения (app)
+app:
+  replicaCount: 1
+  image:
+    repository: nginx  # Пример образа из Docker Hub
+    tag: stable        # Версия образа
+  service:
+    type: ClusterIP
+    port: 80
+
+# Настройки для воркера (worker)
+worker:
+  replicaCount: 1
+  image:
+    repository: redis  # Пример образа из Docker Hub
+    tag: latest        # Версия образа
+  service:
+    type: ClusterIP
+    port: 6379

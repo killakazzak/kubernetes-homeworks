@@ -1,0 +1,8 @@
+# values-stage.yaml
+environment: stage
+app:
+  image:
+    tag: "1.27"
+worker:
+  image:
+    tag: "7.2"
